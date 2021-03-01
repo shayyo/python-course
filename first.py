@@ -75,3 +75,16 @@ def insert_text(string):
 insert_text("added_text")
 
 
+# Write a Python program to sort a string lexicographically. Look For relevant method.
+print('#' * 50)
+
+lexicographic_string = "This sentence is to be lexicographically reordered 123"
+print(sorted(lexicographic_string))
+
+
+# Write a Python program to count occurrences of a substring in a string. Look for a relevant method.
+print('#' * 50)
+
+string = "Welcome to w3resource.com"
+print(string.count('w3resource.com'))
+
