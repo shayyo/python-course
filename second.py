@@ -122,3 +122,36 @@ my_str = "This IS a sTrinG comPOSeD of UppeR aNd 1232323 lOWeR cAseS"
 count_upper_lower_cases(my_str)
 print(f"Number of lower case characters: {lower_letters}")
 print(f"Number of upper case characters: {upper_letters}")
+
+
+# 8
+print('#' * 50)
+print("#### Exercise 8 ####")
+
+orig_list = [1, 2, 3, 3, 3, 3, 4, 5]
+new_unique_list = []
+
+
+def return_unique_list(lst):
+    for item in lst:
+        if item not in new_unique_list:
+            new_unique_list.append(item)
+    return new_unique_list
+
+
+print(return_unique_list(orig_list))
+
+
+# 9
+print('#' * 50)
+print("#### Exercise 9 ####")
+
+
+for x in range(1, 9):
+    for y in range(1, 9):
+        if x >= y:
+            print(y, end='')
+    print()
+
+
+
