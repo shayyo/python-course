@@ -4,6 +4,8 @@ file_name = "encrypted.txt"
 with open(file_name) as f:
     encrypted_text = f.read().lower()
 
+print(encrypted_text)
+
 letters_to_occurrences = {}
 counted_letter = []
 
