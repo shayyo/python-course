@@ -1,52 +1,56 @@
 
-# Read the encrypted file
-file_name = "encrypted.txt"
-with open(file_name) as f:
-    encrypted_text = f.read().lower()
+def main():
+    # Read the encrypted file
+    file_name = "encrypted.txt"
+    with open(file_name) as f:
+        encrypted_text = f.read().lower()
 
-# Get alphabetic characters of encrypted text into dictionary
-letters_to_occurrences = {}
-for i in encrypted_text:
-    if not i.isalpha():
-        continue
-    letters_to_occurrences[i] = letters_to_occurrences.get(i, 0) + 1
+    # Get only alphabetic characters from encrypted text into dictionary and count their occurances
+    letters_to_occurrences = {}
+    for i in encrypted_text:
+        if not i.isalpha():
+            continue
+        letters_to_occurrences[i] = letters_to_occurrences.get(i, 0) + 1
 
-# Get the dict sorted in a descending sort order.
-letters_to_occurrences_sorted = dict(reversed(sorted(letters_to_occurrences.items(), key=lambda item: item[1])))
-# Read the first 4 most common characters from the sorted dict (as a list)
-most_common_enc_str = list(letters_to_occurrences_sorted)[:4]
-# Define the well-known most common characters in English (descending sort order)
-most_common_english = ['e', 't', 'o', 'f']
+    # Get the dict sorted in a descending sort order.
+    letters_to_occurrences_sorted = dict(reversed(sorted(letters_to_occurrences.items(), key=lambda item: item[1])))
+    # Read the first 4 characters (which are the 4 most common) from the sorted dict (as a list)
+    most_common_enc_str = list(letters_to_occurrences_sorted)[:4]
+    # Define the well-known most common characters in English (descending sort order)
+    most_common_english = ['e', 't', 'o', 'f']
 
-# Build a new merged dict with most common characters to use in deciphering
-most_common = {}
-for i in range(4):
-    n = {most_common_english[i]: most_common_enc_str[i]}
-    m = {most_common_enc_str[i]: most_common_english[i]}
-    most_common.update(n)
-    most_common.update(m)
+    # Merged both most common characters to use in deciphering
+    most_common = {}
+    for i in range(4):
+        n = {most_common_english[i]: most_common_enc_str[i]}
+        m = {most_common_enc_str[i]: most_common_english[i]}
+        most_common.update(n)
+        most_common.update(m)
 
-################################################
-unencrypted_text = ""
-for i in encrypted_text:
-    if i in most_common:
-        unencrypted_text += most_common[i]
-    else:
-        unencrypted_text += i
+    # Build the unencrypted text based on the most common dictionary
+    unencrypted_text = ""
+    for i in encrypted_text:
+        if i in most_common:
+            unencrypted_text += most_common[i]
+        else:
+            unencrypted_text += i
 
-print(unencrypted_text)
+    print(f"Unencrypted text is:\n{unencrypted_text}\n")
 
-print("#### PART 2 ####")
+    print("#### PART 2 ####")
 #################################################
-d = {'a': 'e', 'c': 'o', 'b': 't', 'e': 'a', 'd': 'r', 'o': 'c', 'r': 'd', 't': 'b'}
-enc_text = "///bha Taa3add, bha Tdaer, enr b7ha Fdcccccbbb...".lower()
-# ('///the bee3err, the bread, and t7he frooooottt...')
+    # d = {'a': 'e', 'c': 'o', 'b': 't', 'e': 'a', 'd': 'r', 'o': 'c', 'r': 'd', 't': 'b'}
+    # enc_text = "///bha Taa3add, bha Tdaer, enr b7ha Fdcccccbbb...".lower()
+    # # ('///the bee3err, the bread, and t7he frooooottt...')
+    #
+    # unenc_text = ""
+    # for i in enc_text:
+    #     if i in d:
+    #         unenc_text += d[i]
+    #     else:
+    #         unenc_text += i
+    # print(unenc_text)
 
-unenc_text = ""
-for i in enc_text:
-    if i in d:
-        unenc_text += d[i]
-    else:
-        unenc_text += i
-print(unenc_text)
 
+if __name__ == '__main__':
+    main()
