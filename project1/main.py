@@ -39,17 +39,20 @@ def main():
 
     print("#### PART 2 ####")
 #################################################
-    # d = {'a': 'e', 'c': 'o', 'b': 't', 'e': 'a', 'd': 'r', 'o': 'c', 'r': 'd', 't': 'b'}
-    # enc_text = "///bha Taa3add, bha Tdaer, enr b7ha Fdcccccbbb...".lower()
-    # # ('///the bee3err, the bread, and t7he frooooottt...')
-    #
-    # unenc_text = ""
-    # for i in enc_text:
-    #     if i in d:
-    #         unenc_text += d[i]
-    #     else:
-    #         unenc_text += i
-    # print(unenc_text)
+    my_dict = {'a': 'e', 'c': 'o', 'b': 't', 'e': 'a', 'd': 'r', 'o': 'c', 'r': 'd', 't': 'b'}
+
+    def decrypt_text(txt):
+        txt = txt.lower()
+        new_txt = ""
+        for l in txt:
+            if l in my_dict:
+                new_txt += my_dict[l]
+            else:
+                new_txt += l
+        print(f"Unencrypted text is:\n {new_txt}")
+
+    enc_text = "///bha Taa3add, bha Tdaer, enr b7ha Fdcccccbbb..."
+    decrypt_text(enc_text)
 
 
 if __name__ == '__main__':
