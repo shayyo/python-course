@@ -49,11 +49,14 @@ def main():
                 new_txt += my_dict[l]
             else:
                 new_txt += l
-        print(f"Unencrypted text is:\n {new_txt}")
+        print(f"Unencrypted text is:\n {new_txt}\n")
 
     enc_text = "///bha Taa3add, bha Tdaer, enr b7ha Fdcccccbbb..."
     decrypt_text(enc_text)
 
+    print("#### PART 3 ####")
+
 
 if __name__ == '__main__':
     main()
+
